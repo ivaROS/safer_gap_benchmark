@@ -1,4 +1,4 @@
-PGMpcHcLocalPlannerROS:
+SGMpcHcLocalPlannerROS:
 
   odom_topic: odom
     
