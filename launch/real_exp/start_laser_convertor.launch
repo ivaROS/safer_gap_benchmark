@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Fake laser -->
+    <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" args="manager"  required="true"/>
+    <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan"
+          args="load full_depthimage_to_laserscan/DepthImageToLaserScanNodelet laserscan_nodelet_manager"  required="true">
+      <param name="scan_height" value="479"/>
+      <param name="output_frame_id" value="camera_depth_frame"/>
+      <param name="range_min" value="0.45"/>
+      <remap from="image" to="/camera/depth/image_raw"/>
+      <remap from="scan" to="/scan"/>
+      <param name="floor_dist" value=".25"/>
+      <param name="overhead_dist" value=".15"/>
+      <param name="hole_thresh" value="0.1"/>
+    </node>
+    
+</launch>

@@ -1,0 +1,14 @@
+<launch>
+  <arg name="world_file" default="$(find bezier_gap_benchmark)/world/empty_room_20x20.world"/>
+  <arg name="map_file" default="$(find bezier_gap_benchmark)/maps/empty_room_20x20.yaml"/>
+  <!--<arg name="ground_truth_map_file" default="$(find sparse_nav_benchmark)/maps/ground_truth/?.yaml"/>--> <!-- Fill in when available-->
+  <arg name="gui" default="$(optenv GM_PARAM_GAZEBO_GUI true)"/>
+
+  <include file="$(find bezier_gap_benchmark)/launch/environment/gazebo_general.launch">
+    <arg name="world_file" value="$(arg world_file)"/>
+    <arg name="map_file" value="$(arg map_file)"/>
+    <!--<arg name="ground_truth_map_file" value="$(arg ground_truth_map_file)"/>--> <!-- If no value provided, groundtruth map is simply not published-->
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+  
+</launch>
